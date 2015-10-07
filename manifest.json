@@ -1,27 +1,15 @@
 {
-  "name" : "PM credit card filler",
-  "version" : "0.1.4",
+  "name" : "Braintree CC filler",
+  "version" : "0.1.6",
   "description" : "Fills mock credit card numbers into CC forms.",
   "page_action" :
   {
     "default_icon" : "replace_jinja_19.png",
-    "default_title" : "Credit card filler"
+    "default_title" : "Braintree Credit card filler"
   },
-  "permissions": ["background", "tabs", "http://*/*", "https://*/*"],
+  "permissions": ["background", "tabs", "declarativeContent", "http://*/*", "https://*/*"],
   "content_scripts" : [
     {
-      "matches" : [
-        "http://*.ngrok.com/*",
-        "https://*.ngrok.com/*",
-        "http://qa.picmonkey.com/*",
-        "https://qa.picmonkey.com/*",
-        "http://127.0.0.1/*",
-        "http://127.0.0.1:*/*"
-      ],
-      "js" : ["jquery-1.9.1.min.js", "contentscript.js"],
-      "run_at" : "document_idle",
-      "all_frames" : false
-    }, {
       "matches" : [
         "https://assets.braintreegateway.com/*"
       ],
@@ -30,12 +18,19 @@
       "all_frames" : true
     }
   ],
+  "options_page": "options.html",
+  "page_action": {
+    "default_icon": {
+      "19": "replace_19.png"
+    },
+    "default_title": "Fill Braintree CC hosted fields",
+  },
   "icons" : {
     "48" : "replace_48.png",
     "128" : "replace_128.png"
   },
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["common.js", "background.js"]
   },
   "manifest_version": 2
 }

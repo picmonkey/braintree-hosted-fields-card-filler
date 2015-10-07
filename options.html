@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <title>Braintree CC filler options</title>
+  <script src="jquery-1.9.1.min.js"></script>
+  <script src="common.js"></script>
+  <script src="options.js"></script>
+  <style>
+    body {
+      margin: 40px;
+    }
+    .card-option {
+      font-size: 18px;
+      margin: 5px;
+      background-color: #eee;
+    }
+    .card-option.active {
+      background-color: #0052FF;
+      color: #ffffff;
+    }
+    .expirations, .numbers {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="">
+    <h2>Currently using numbers:</h2>
+    <div class="numbers">Card number: <strong id="cc_number"></strong></div>
+    <br />
+    <div class="numbers">CVV: <strong id="cvv"></strong></div>
+    <br />
+    <div class="numbers">Expiration Month: <strong id="expirationMonth"></strong></div>
+    <br />
+    <div class="numbers">Expiration Year: <strong id="expirationYear"></strong></div>
+
+    <h2>Choose which test card to use</h2>
+
+    <h3>Successful cards</h3>
+    <button id="c4111111111111111" class="card-option" data-card='4111111111111111' data-cvv='123'>Visa</button>
+    <button id="c5555555555554444" class="card-option" data-card='5555555555554444' data-cvv='123'>MasterCard</button>
+    <button id="c378282246310005" class="card-option" data-card='378282246310005' data-cvv='1234'>American Express</button>
+    <h3>Cards that will fail</h3>
+    <button id="c4000111111111115" class="card-option" data-card='4000111111111115' data-cvv='201'>Visa</button>
+    <button id="c5105105105105100" class="card-option" data-card='5105105105105100' data-cvv='201'>MasterCard</button>
+    <button id="c378734493671000" class="card-option" data-card='378734493671000' data-cvv='201'>American Express</button>
+    <h3>Cards that will show fraud</h3>
+    <button id="c4000111111111511" class="card-option" data-card='4000111111111511' data-cvv='201'>Visa</button>
+  </div>
+
+  <h3>Expiration:</h3>
+  <div class="expirations">
+    <label for="expirationMonth">Expiration month</label>
+    <input name="expirationMonth" maxlength="4" size="4" type="text" />
+    <label for="expirationYear">Expiration year</label>
+    <input name="expirationYear" maxlength="6" size="6" type="text" />
+  </div>
+
+</body>
+</html>
+

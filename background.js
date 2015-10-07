@@ -1,10 +1,20 @@
-chrome.runtime.onMessage.addListener(
-  function(message, sender, sendResponse) {
-    console.log("I'm window:" + window.location + ' and I got a message');
-    console.log(sender.tab ?
-                "from a content script:" + sender.tab.url :
-                "from the extension");
-    chrome.tabs.sendMessage(sender.tab.id, message);
-    if (message.greeting == "hello")
-      sendResponse({farewell: "goodbye"});
+
+// Update the declarative rules on install or upgrade.
+chrome.runtime.onInstalled.addListener(function() {
+  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+    chrome.declarativeContent.onPageChanged.addRules([{
+      conditions: [
+        new chrome.declarativeContent.PageStateMatcher({
+          css: ["iframe#braintree-hosted-field-number"]
+        })
+      ],
+      actions: [new chrome.declarativeContent.ShowPageAction() ]
+    }]);
   });
+});
+
+chrome.pageAction.onClicked.addListener(function (tab) {
+  // grab cc data
+  var mock_cc = loadMockCC();
+  chrome.tabs.sendMessage(tab.id, mock_cc);
+});
