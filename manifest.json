@@ -1,6 +1,6 @@
 {
   "name" : "Braintree CC filler",
-  "version" : "0.1.6",
+  "version" : "0.1.7",
   "description" : "Fills mock credit card numbers into CC forms.",
   "page_action" :
   {
@@ -23,7 +23,7 @@
     "default_icon": {
       "19": "replace_19.png"
     },
-    "default_title": "Fill Braintree CC hosted fields",
+    "default_title": "Fill Braintree CC hosted fields"
   },
   "icons" : {
     "48" : "replace_48.png",
