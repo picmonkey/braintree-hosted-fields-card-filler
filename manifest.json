@@ -13,8 +13,8 @@
       "matches" : [
         "https://assets.braintreegateway.com/*"
       ],
-      "js" : ["braintree_content.js"],
-      "run_at" : "document_end",
+      "js" : ["jquery-1.9.1.min.js", "braintree_content.js"],
+      "run_at" : "document_idle",
       "all_frames" : true
     }
   ],

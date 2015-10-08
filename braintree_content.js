@@ -2,15 +2,18 @@
 chrome.runtime.onMessage.addListener(
   function(message, sender) {
     try {
-      document.getElementById('credit-card-number').value = message.cc_number;
+      $('#credit-card-number').trigger('change:number.isFocused');
+      $('#credit-card-number').val(message.cc_number);
+      $('#credit-card-number').trigger('change');
+      $('#credit-card-number').trigger('input');
     }
-    catch(e) {}
+    catch(e) {
+    }
 
     try {
-      var cvvs = document.getElementsByClassName('cvv');
-      for (index = 0, len = cvvs.length; index < len; ++index) {
-        cvvs[index].value = message.cvv;
-      }
+      $('.cvv').val(message.cvv).trigger('change:cvv.value');
+      $('.cvv').trigger('change:cvv.isFocused');
+      $('.cvv').trigger('input');
     }
     catch(e) {}
 
@@ -29,4 +32,6 @@ chrome.runtime.onMessage.addListener(
       }
     }
     catch(e) {}
+
+
   });
