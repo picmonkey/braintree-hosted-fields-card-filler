@@ -1,6 +1,6 @@
 {
   "name" : "Braintree CC filler",
-  "version" : "0.1.7",
+  "version" : "0.1.8",
   "description" : "Fills mock credit card numbers into CC forms.",
   "page_action" :
   {
